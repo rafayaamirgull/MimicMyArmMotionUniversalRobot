@@ -1,0 +1,65 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/GalvanizedMetal.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/devices/robotiq/protos/Robotiq3fGripper.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/solids/protos/SolidBox.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/appearances/protos/ThreadMetalPlate.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/universal_robots/protos/UR5e.proto"
+
+WorldInfo {
+  info [
+    "Universal Robot UR3e, UR5e and UR10e grasping cans using Robotiq 3F grippers."
+  ]
+  title "Universal Robot"
+  basicTimeStep 8
+  physicsDisableAngularThreshold 0.1
+  coordinateSystem "NUE"
+  contactProperties [
+    ContactProperties {
+      bounce 0.1
+    }
+    ContactProperties {
+      material1 "slope"
+      coulombFriction [
+        0.5
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.18280639766137463 -0.6756154008315133 -0.7142308108261258 2.5676705924156233
+  position 1.9619404682675967 3.0382578996706764 -1.3962015161438446
+  exposure 1.7
+}
+TexturedBackground {
+  texture "factory"
+}
+Floor {
+  size 17 5
+  appearance ThreadMetalPlate {
+  }
+}
+SolidBox {
+  translation -0.135 0.615 0.0323
+  size 0.5 4 0.5
+  appearance GalvanizedMetal {
+  }
+}
+UR5e {
+  translation -0.227838 2.61712 0.05
+  rotation 0.5828890860513393 0.5661100835742717 0.5828890860513393 -2.111335307179586
+  name "UR5"
+  controller "UR5"
+  selfCollision FALSE
+  toolSlot [
+    DEF UR5 Robotiq3fGripper {
+      name "UR5"
+    }
+    DistanceSensor {
+      translation 0 0.1 0
+      rotation 0 0 1 1.570796
+    }
+  ]
+}
